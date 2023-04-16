@@ -12,15 +12,16 @@ repositories {
 }
 
 dependencies {
-    compile 'io.micrometer:micrometer-registry-prometheus:latest.release'
+    implementation 'io.micrometer:micrometer-registry-prometheus:latest.release'
     compileOnly group: 'com.github.tomakehurst', name: 'wiremock', version: "$WIREMOCK_VERSION"
 
-	testCompile group: 'com.github.tomakehurst', name: 'wiremock', version: "$MICROMETER_VERSION"
-    testCompile group: 'junit', name: 'junit', version: "$JUNIT_VERSION"
+//	testImplementation group: 'com.github.tomakehurst', name: 'wiremock', version: "$MICROMETER_VERSION"
+//    testImplementation group: 'junit', name: 'junit', version: "$JUNIT_VERSION"
 }
 
 task fatJar(type: Jar) {
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
   archiveBaseName = 'wire-mock-extensions'
-  from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+  from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
   with jar
 }
