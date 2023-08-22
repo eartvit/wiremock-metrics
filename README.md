@@ -4,7 +4,7 @@ Originally forked from https://github.com/mikeskali/wiremock-metrics
 
 Since it creates a fatJar, all dependencies are packed, including WireMock. Note that this repo has an updated version of the build.gradle to make it compatible with Gradle 8. Also, the WireMock version has been updated to the latest one that may be compiled with this extension (newer versions seem not to be found by gradle/mvn?)
 
-The way this library is started in Standalon CLI is updated
+The way this library is started in Standalone CLI is updated
 
 Extension to add [Prometheus](https://prometheus.io/) telemetry support to [Wiremock](https://github.com/tomakehurst/wiremock).
 This repo utilized `PostServeAction` to record all requests and `AdminApiExtention` to expose metrics in Prometheus format (under `/admin__metrics`)
